@@ -15,6 +15,7 @@ use Rentlio\Api\Request\GetInvoiceDetailsRequest;
 use Rentlio\Api\Request\GetInvoicesByPropertyRequest;
 use Rentlio\Api\Request\GetInvoicesByReservationRequest;
 use Rentlio\Api\Request\GetMyDataRequest;
+use Rentlio\Api\Request\GetReservationDetailsRequest;
 use Rentlio\Api\Request\ListAllArrivalArrangementsRequest;
 use Rentlio\Api\Request\ListAllCheckedInGuestsRequest;
 use Rentlio\Api\Request\ListAllCurrenciesRequest;
@@ -90,8 +91,8 @@ class Client
             'base_url' => $this->baseApiUrl,
             'curl'     => [
                 CURLOPT_SSLVERSION     => CURL_SSLVERSION_TLSv1_2,
-                CURLOPT_SSL_VERIFYPEER => false
-            ]
+                CURLOPT_SSL_VERIFYPEER => false,
+            ],
         ]);
     }
 
@@ -164,6 +165,18 @@ class Client
     public function getMyData()
     {
         $request = new GetMyDataRequest();
+        return $this->send($request);
+    }
+    
+    /**
+     * Calls api endpoint for getting reservation details
+     *
+     * @param $reservationId
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     */
+    public function getReservationDetails($reservationId)
+    {
+        $request = new GetReservationDetailsRequest($reservationId);
         return $this->send($request);
     }
 

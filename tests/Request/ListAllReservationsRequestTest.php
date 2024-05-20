@@ -20,6 +20,8 @@ class ListAllReservationsRequestTest extends PHPUnit_Framework_TestCase
             ->setSortBy('name')
             ->setStatus(1)
             ->setUnitsId('2345')
+            ->setDateFrom('2017-12-13')
+            ->setDateTo('2017-12-23')
             ->setPropertiesId('1212')
             ->setBookedAtFrom('2017-12-13')
             ->setBookedAtTo('2017-12-23')
@@ -34,9 +36,9 @@ class ListAllReservationsRequestTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('/reservations', $uri->getPath());
         $this->assertEquals('order_by=name&order_direction=DESC&page=1&status=1&unitsId=2345&' .
-            'propertiesId=1212&bookedAtFrom=2017-12-13&bookedAtTo=2017-12-23&cancelAtFrom=2017-12-24&' .
-            'cancelAtTo=2017-12-26&createdAtFrom=2017-11-24&createdAtTo=2017-11-30' .
-            '&modifiedAtFrom=2017-12-29&modifiedAtTo=2017-12-30', $uri->getQuery());
+            'propertiesId=1212&dateFrom=2017-12-13&dateTo=2017-12-23&bookedAtFrom=2017-12-13&' .
+            'bookedAtTo=2017-12-23&cancelAtFrom=2017-12-24&cancelAtTo=2017-12-26&createdAtFrom=2017-11-24&' .
+            'createdAtTo=2017-11-30&modifiedAtFrom=2017-12-29&modifiedAtTo=2017-12-30', $uri->getQuery());
     }
 
 }

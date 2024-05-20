@@ -26,6 +26,16 @@ class ListAllReservationsRequest extends AbstractRequest
      * @var int
      */
     protected $propertiesId;
+    
+    /**
+     * @var string ISO 8601 Date format
+     */
+    protected $dateFrom;
+    
+    /**
+     * @var string ISO 8601 Date format
+     */
+    protected $dateTo;
 
     /**
      * @var string ISO 8601 Date format
@@ -89,6 +99,26 @@ class ListAllReservationsRequest extends AbstractRequest
     public function setUnitsId($unitsId)
     {
         $this->unitsId = $unitsId;
+        return $this;
+    }
+    
+    /**
+     * @param string $dateFrom
+     * @return $this
+     */
+    public function setDateFrom(string $dateFrom)
+    {
+        $this->dateFrom = $dateFrom;
+        return $this;
+    }
+    
+    /**
+     * @param string $dateTo
+     * @return $this
+     */
+    public function setDateTo(string $dateTo)
+    {
+        $this->dateTo = $dateTo;
         return $this;
     }
 
@@ -191,6 +221,8 @@ class ListAllReservationsRequest extends AbstractRequest
             'status'         => $this->status,
             'unitsId'        => $this->unitsId,
             'propertiesId'   => $this->propertiesId,
+            'dateFrom'       => $this->dateFrom,
+            'dateTo'         => $this->dateTo,
             'bookedAtFrom'   => $this->bookedAtFrom,
             'bookedAtTo'     => $this->bookedAtTo,
             'cancelAtFrom'   => $this->cancelAtFrom,
